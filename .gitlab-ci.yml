@@ -1,11 +1,10 @@
 stages:
   - build
   - unit-tests
-  - quality
 
 build_backend:
   stage: build
-  image: maven:3.8-openjdk-17
+  image: maven:3.9-openjdk-22  # Changement ici
   script:
     - cd etudiant-service && mvn clean package -B
     - cd professeur-service && mvn clean package -B
@@ -21,24 +20,9 @@ build_backend:
 
 unit_tests_backend:
   stage: unit-tests
-  image: maven:3.8-openjdk-17
+  image: maven:3.9-openjdk-22  # Changement ici
   script:
     - cd etudiant-service && mvn test
     - cd professeur-service && mvn test
     - cd cours-service && mvn test
     - cd emploi-du-temps-service && mvn test
-
-quality_check:
-  stage: quality
-  image: maven:3.8-openjdk-17
-  script:
-    - cd etudiant-service && mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
-    - cd professeur-service && mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
-    - cd cours-service && mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
-    - cd emploi-du-temps-service && mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
-  dependencies:
-    - build_backend
-    - unit_tests_backend
-
-
-

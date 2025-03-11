@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be467234-c2ca-40ac-9f64-6ea65875633e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cours-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/emploi-du-temps-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etudiant-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/professeur-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cours-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cours-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emploi-du-temps-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emploi-du-temps-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etudiant-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/etudiant-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/professeur-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/professeur-service/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2u5jvnt3S06aikukWZffVzvNWPA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CoursServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmploiDuTempsServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EtudiantServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProfesseurServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mac/Desktop/fatima/challenge/services/emploi-du-temps-service/src/main/java/com/ecole/emploidutemps/emploi_du_temps_service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/emploi-du-temps-service/src/main/java/com/ecole/emploidutemps/emploi_du_temps_service" />
+      <recent name="$PROJECT_DIR$/cours-service/src/main/java/com/ecole/cours/cours_service" />
+      <recent name="$PROJECT_DIR$/professeur-service/src/main/java/com/ecole/professeur/professeur_service" />
+      <recent name="$PROJECT_DIR$/emploi-du-temps-service/src/main/resources" />
+      <recent name="$PROJECT_DIR$/cours-service/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cours-service/src/main/resources/db" />
+      <recent name="$PROJECT_DIR$/cours-service/src/main/resources" />
+      <recent name="$PROJECT_DIR$/professeur-service/src/main/resources/db" />
+      <recent name="$PROJECT_DIR$/etudiant-service/src/main/resources/db/migrations" />
+      <recent name="$PROJECT_DIR$/etudiant-service/src/main/resources/db/migrations/migrations" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.CoursServiceApplication">
+    <configuration name="CoursServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="cours-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecole.cours.cours_service.CoursServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmploiDuTempsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="emploi-du-temps-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecole.emploidutemps.emploi_du_temps_service.EmploiDuTempsServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EtudiantServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="etudiant-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecole.etudiant.etudiant_service.EtudiantServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProfesseurServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="professeur-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecole.professeur.professeur_service.ProfesseurServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Physical" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be467234-c2ca-40ac-9f64-6ea65875633e" name="Changes" comment="" />
+      <created>1741545563407</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741545563407</updated>
+      <workItem from="1741545564736" duration="778000" />
+      <workItem from="1741546984443" duration="14415000" />
+      <workItem from="1741579401141" duration="20659000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,0 +1,154 @@
+stages:
+  - build
+  - unit-tests
+  - quality
+  - docker-build
+  - artifact-push
+  - docker-push
+  - provision
+  - deploy
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  NEXUS_URL_LOCAL: "http://localhost:8081/repository/maven-releases" # Remplace
+  DOCKER_REGISTRY_LOCAL: "localhost:5000"
+  DOCKER_REGISTRY_DISTANT: "docker.io/<ton-compte>" # Remplace
+
+build_backend:
+  stage: build
+  image: maven:3.8-openjdk-17
+  script:
+    - cd etudiant-service && mvn clean package -B
+    - cd professeur-service && mvn clean package -B
+    - cd cours-service && mvn clean package -B
+    - cd emploi-du-temps-service && mvn clean package -B
+  artifacts:
+    paths:
+      - etudiant-service/target/*.jar
+      - professeur-service/target/*.jar
+      - cours-service/target/*.jar
+      - emploi-du-temps-service/target/*.jar
+    expire_in: 1 week
+
+unit_tests_backend:
+  stage: unit-tests
+  image: maven:3.8-openjdk-17
+  script:
+    - cd etudiant-service && mvn test
+    - cd professeur-service && mvn test
+    - cd cours-service && mvn test
+    - cd emploi-du-temps-service && mvn test
+
+quality_check:
+  stage: quality
+  image: maven:3.8-openjdk-17
+  script:
+    - mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$SONAR_TOKEN
+  dependencies:
+    - build_backend
+
+docker_build:
+  stage: docker-build
+  image: docker:20
+  services:
+    - docker:dind
+  script:
+    - docker build -t $DOCKER_REGISTRY_LOCAL/etudiant-service:latest ./etudiant-service
+    - docker build -t $DOCKER_REGISTRY_LOCAL/professeur-service:latest ./professeur-service
+    - docker build -t $DOCKER_REGISTRY_LOCAL/cours-service:latest ./cours-service
+    - docker build -t $DOCKER_REGISTRY_LOCAL/emploi-du-temps-service:latest ./emploi-du-temps-service
+  dependencies:
+    - build_backend
+
+artifact_push_dev_staging:
+  stage: artifact-push
+  image: maven:3.8-openjdk-17
+  script:
+    - cd etudiant-service && mvn deploy -DaltDeploymentRepository=nexus-local::default::$NEXUS_URL_LOCAL
+    - cd professeur-service && mvn deploy -DaltDeploymentRepository=nexus-local::default::$NEXUS_URL_LOCAL
+    - cd cours-service && mvn deploy -DaltDeploymentRepository=nexus-local::default::$NEXUS_URL_LOCAL
+    - cd emploi-du-temps-service && mvn deploy -DaltDeploymentRepository=nexus-local::default::$NEXUS_URL_LOCAL
+  only:
+    - dev
+    - staging
+  dependencies:
+    - build_backend
+
+artifact_push_preprod_prod:
+  stage: artifact-push
+  image: maven:3.8-openjdk-17
+  script:
+    - cd etudiant-service && mvn deploy -DaltDeploymentRepository=nexus-public::default::$NEXUS_URL_PUBLIC
+    - cd professeur-service && mvn deploy -DaltDeploymentRepository=nexus-public::default::$NEXUS_URL_PUBLIC
+    - cd cours-service && mvn deploy -DaltDeploymentRepository=nexus-public::default::$NEXUS_URL_PUBLIC
+    - cd emploi-du-temps-service && mvn deploy -DaltDeploymentRepository=nexus-public::default::$NEXUS_URL_PUBLIC
+  only:
+    - preprod
+    - main
+  dependencies:
+    - build_backend
+
+docker_push_dev_staging:
+  stage: docker-push
+  image: docker:20
+  services:
+    - docker:dind
+  script:
+    - docker push $DOCKER_REGISTRY_LOCAL/etudiant-service:latest
+    - docker push $DOCKER_REGISTRY_LOCAL/professeur-service:latest
+    - docker push $DOCKER_REGISTRY_LOCAL/cours-service:latest
+    - docker push $DOCKER_REGISTRY_LOCAL/emploi-du-temps-service:latest
+  only:
+    - dev
+    - staging
+  dependencies:
+    - docker_build
+
+docker_push_preprod_prod:
+  stage: docker-push
+  image: docker:20
+  services:
+    - docker:dind
+  script:
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $DOCKER_REGISTRY_DISTANT
+    - docker tag $DOCKER_REGISTRY_LOCAL/etudiant-service:latest $DOCKER_REGISTRY_DISTANT/etudiant-service:latest
+    - docker tag $DOCKER_REGISTRY_LOCAL/professeur-service:latest $DOCKER_REGISTRY_DISTANT/professeur-service:latest
+    - docker tag $DOCKER_REGISTRY_LOCAL/cours-service:latest $DOCKER_REGISTRY_DISTANT/cours-service:latest
+    - docker tag $DOCKER_REGISTRY_LOCAL/emploi-du-temps-service:latest $DOCKER_REGISTRY_DISTANT/emploi-du-temps-service:latest
+    - docker push $DOCKER_REGISTRY_DISTANT/etudiant-service:latest
+    - docker push $DOCKER_REGISTRY_DISTANT/professeur-service:latest
+    - docker push $DOCKER_REGISTRY_DISTANT/cours-service:latest
+    - docker push $DOCKER_REGISTRY_DISTANT/emploi-du-temps-service:latest
+  only:
+    - preprod
+    - main
+  dependencies:
+    - docker_build
+
+provision_env:
+  stage: provision
+  image: hashicorp/terraform:1.5
+  script:
+    - cd terraform
+    - terraform init
+    - terraform apply -auto-approve
+  only:
+    - dev
+    - staging
+    - preprod
+    - main
+
+deploy_k8s:
+  stage: deploy
+  image: bitnami/kubectl
+  script:
+    - kubectl apply -f k8s/
+    - argocd app sync ecole-backend --assume-yes
+  only:
+    - dev
+    - staging
+    - preprod
+    - main
+  dependencies:
+    - docker_push_dev_staging
+    - docker_push_preprod_prod

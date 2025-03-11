@@ -34,14 +34,26 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: "nourad23"         # Remplacer par votre nom d'utilisateur Docker Hub
+          username: "nouradine04"         # Remplacer par votre nom d'utilisateur Docker Hub
           password: "Texaco@10"           # Remplacer par votre mot de passe Docker Hub
-      - name: Build and  or Push Docker Images
+      - name: Build and Push Docker Images
         run: |
           for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do
             if [ -d "$service" ]; then
               echo "Building and pushing $service..."
               cd "$service" && docker build -t nouradine04/$service:latest . && docker push nouradine04/$service:latest
+              cd ..
+            fi
+          done
+      - name: SonarCloud Scan
+        run: |
+          for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do
+            if [ -d "$service" ]; then
+              echo "Scanning $service with SonarQube..."
+              cd "$service" && mvn sonar:sonar \
+                -Dsonar.projectKey=Microservice \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=sqp_734b68bdee995314304afc64aa778905487659ea
               cd ..
             fi
           done

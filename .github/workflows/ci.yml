@@ -35,7 +35,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: "nourad23"         # Remplacer par votre nom d'utilisateur Docker Hub
-          password: "Texaco@1"           # Remplacer par votre mot de passe Docker Hub
+          password: "Texaco@10"           # Remplacer par votre mot de passe Docker Hub
       - name: Build and  or Push Docker Images
         run: |
           for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do

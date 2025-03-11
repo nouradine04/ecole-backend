@@ -27,33 +27,32 @@ jobs:
               echo "Processing $service..."
               cd "$service" && mvn clean package -B && mvn test
               cd ..
-            else
-              echo "Warning: $service not found, skipping..."
-            fi
-          done
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: "nourad23"
-          password: "Texaco@10"
-      - name: Build and Push Docker Images
-        run: |
-          for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do
-            if [ -d "$service" ]; then
-              echo "Building and pushing $service..."
-              cd "$service" && docker build -t nouradine04/$service:latest . && docker push nouradine04/$service:latest
-              cd ..
             fi
           done
       - name: SonarCloud Scan
         run: |
           for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do
             if [ -d "$service" ]; then
-              echo "Scanning $service with SonarQube..."
+              echo "Scanning $service with SonarCloud..."
               cd "$service" && mvn sonar:sonar \
-                -Dsonar.projectKey=Microservice \
-                -Dsonar.host.url=http://localhost:9000 \
-                -Dsonar.login=sqp_734b68bdee995314304afc64aa778905487659ea
+                -Dsonar.projectKey=nouradine04_ecole-backend \
+                -Dsonar.organization=nouradine04 \
+                -Dsonar.host.url=https://sonarcloud.io \
+                -Dsonar.login=a66e7c0f750fc343688a81beb37264444415d3af  
+              cd ..
+            fi
+          done
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: "nourad23"         # Remplacer par votre nom d'utilisateur Docker Hub
+          password: "Texaco@10"           # Remplacer par votre mot de passe Docker Hub
+      - name: Build and Push Docker Images
+        run: |
+          for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do
+            if [ -d "$service" ]; then
+              echo "Building and pushing $service..."
+              cd "$service" && docker build -t nouradine04/$service:latest . && docker push nouradine04/$service:latest
               cd ..
             fi
           done

@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/professeurs")
 @CrossOrigin(origins = "http://localhost:5173")
-public class ProfesseurController {
+public abstract class ProfesseurController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProfesseurController.class);
 
@@ -57,4 +57,6 @@ public class ProfesseurController {
         professeurRepository.delete(professeur);
         return ResponseEntity.noContent().build();
     }
+
+    protected abstract List<Professeur> fetchAllProfesseurs();
 }

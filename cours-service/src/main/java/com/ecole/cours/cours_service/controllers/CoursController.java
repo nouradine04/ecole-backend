@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cours")
 @CrossOrigin(origins = "http://localhost:5173")
-public class CoursController {
+public abstract class CoursController {
     @Autowired
     private CoursRepository coursRepository;
     @Autowired
@@ -58,5 +58,5 @@ public class CoursController {
     }
 
 
-
+    protected abstract List<Cours> fetchAllCours();
 }

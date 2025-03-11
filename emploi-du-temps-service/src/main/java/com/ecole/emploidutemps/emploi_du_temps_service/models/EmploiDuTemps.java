@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Data
@@ -34,6 +35,14 @@ public class EmploiDuTemps {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public EmploiDuTemps(Long id, Long coursId, String debut, String fin) {
+        this.id = id;
+        this.coursId = coursId;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        this.debut = LocalDateTime.parse(debut, formatter);
+        this.fin = LocalDateTime.parse(fin, formatter);
     }
 
     public void setDebut(LocalDateTime debut) {

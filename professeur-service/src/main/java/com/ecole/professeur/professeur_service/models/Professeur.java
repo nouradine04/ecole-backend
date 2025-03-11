@@ -14,6 +14,14 @@ public class Professeur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
+
+    public Professeur(Long id, String nom, String prenom, String specialite) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.specialite = specialite;
+    }
+
     private String prenom;
     private String specialite;
 

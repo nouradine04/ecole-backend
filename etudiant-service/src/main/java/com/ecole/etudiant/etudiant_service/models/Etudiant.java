@@ -38,6 +38,13 @@ public class Etudiant {
         return prenom;
     }
 
+    public Etudiant(Long id, String nom, String prenom, String email) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+    }
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }

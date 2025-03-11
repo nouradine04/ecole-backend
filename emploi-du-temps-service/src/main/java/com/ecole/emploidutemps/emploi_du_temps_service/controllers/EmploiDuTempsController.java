@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/emplois")
 @CrossOrigin(origins = "http://localhost:5173")
-public class EmploiDuTempsController {
+public abstract class EmploiDuTempsController {
 
 
     @Autowired
@@ -56,4 +56,6 @@ public class EmploiDuTempsController {
         emploiDuTempsRepository.delete(emploi);
         return ResponseEntity.noContent().build();
     }
+
+    protected abstract List<EmploiDuTemps> fetchAllEmplois();
 }

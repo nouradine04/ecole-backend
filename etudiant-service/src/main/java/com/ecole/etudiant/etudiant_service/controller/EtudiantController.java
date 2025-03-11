@@ -46,6 +46,10 @@ public class EtudiantController {
         return ResponseEntity.ok(updatedEtudiant);
     }
 
+    protected List<Etudiant> fetchAllEtudiants() {
+        return etudiantRepository.findAll();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEtudiant(@PathVariable Long id) {
         Etudiant etudiant = etudiantRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Étudiant non trouvé "));

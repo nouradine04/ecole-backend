@@ -12,7 +12,7 @@ variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2"
   NEXUS_URL_LOCAL: "http://localhost:8081/repository/maven-releases" # Remplace
   DOCKER_REGISTRY_LOCAL: "localhost:5000"
-  DOCKER_REGISTRY_DISTANT: "docker.io/<ton-compte>" # Remplace
+  DOCKER_REGISTRY_DISTANT: "docker.io/<nourad23>"
 
 build_backend:
   stage: build
@@ -43,7 +43,7 @@ quality_check:
   stage: quality
   image: maven:3.8-openjdk-17
   script:
-    - mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$SONAR_TOKEN
+    - mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=passer
   dependencies:
     - build_backend
 

@@ -27,6 +27,12 @@ public class Cours {
         return id;
     }
 
+    public Cours(Long id, String titre, Long professeurId) {
+        this.id = id;
+        this.titre = titre;
+        this.professeurId = professeurId;
+    }
+
     public String getTitre() {
         return titre;
     }

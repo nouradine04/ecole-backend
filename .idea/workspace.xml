@@ -5,15 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be467234-c2ca-40ac-9f64-6ea65875633e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cours-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/emploi-du-temps-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/etudiant-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/professeur-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cours-service/src/test/java/com/ecole/cours/cours_service/CoursControllerSimpleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/emploi-du-temps-service/src/test/java/com/ecole/emploidutemps/emploi_du_temps_service/EmploiDuTempsControllerSimpleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etudiant-service/src/test/java/com/ecole/etudiant/etudiant_service/EtudiantControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/professeur-service/src/test/java/com/ecole/professeur/professeur_service/ProfesseurControllerSimpleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cours-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cours-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cours-service/src/main/java/com/ecole/cours/cours_service/controllers/CoursController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cours-service/src/main/java/com/ecole/cours/cours_service/controllers/CoursController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cours-service/src/main/java/com/ecole/cours/cours_service/models/Cours.java" beforeDir="false" afterPath="$PROJECT_DIR$/cours-service/src/main/java/com/ecole/cours/cours_service/models/Cours.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/emploi-du-temps-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/emploi-du-temps-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emploi-du-temps-service/src/main/java/com/ecole/emploidutemps/emploi_du_temps_service/controllers/EmploiDuTempsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/emploi-du-temps-service/src/main/java/com/ecole/emploidutemps/emploi_du_temps_service/controllers/EmploiDuTempsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emploi-du-temps-service/src/main/java/com/ecole/emploidutemps/emploi_du_temps_service/models/EmploiDuTemps.java" beforeDir="false" afterPath="$PROJECT_DIR$/emploi-du-temps-service/src/main/java/com/ecole/emploidutemps/emploi_du_temps_service/models/EmploiDuTemps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/etudiant-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/etudiant-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etudiant-service/src/main/java/com/ecole/etudiant/etudiant_service/controller/EtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/etudiant-service/src/main/java/com/ecole/etudiant/etudiant_service/controller/EtudiantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etudiant-service/src/main/java/com/ecole/etudiant/etudiant_service/models/Etudiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/etudiant-service/src/main/java/com/ecole/etudiant/etudiant_service/models/Etudiant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/professeur-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/professeur-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/professeur-service/src/main/java/com/ecole/professeur/professeur_service/controllers/ProfesseurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/professeur-service/src/main/java/com/ecole/professeur/professeur_service/controllers/ProfesseurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/professeur-service/src/main/java/com/ecole/professeur/professeur_service/models/Professeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/professeur-service/src/main/java/com/ecole/professeur/professeur_service/models/Professeur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,6 +56,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;JUnit.EtudiantControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EtudiantControllerTest.testGetAllEtudiants.executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -96,7 +108,38 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CoursServiceApplication">
+  <component name="RunManager" selected="JUnit.EtudiantControllerTest">
+    <configuration name="EtudiantControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="etudiant-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecole.etudiant.etudiant_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ecole.etudiant.etudiant_service" />
+      <option name="MAIN_CLASS_NAME" value="com.ecole.etudiant.etudiant_service.EtudiantControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EtudiantControllerTest.testGetAllEtudiants" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="etudiant-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecole.etudiant.etudiant_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ecole.etudiant.etudiant_service" />
+      <option name="MAIN_CLASS_NAME" value="com.ecole.etudiant.etudiant_service.EtudiantControllerTest" />
+      <option name="METHOD_NAME" value="testGetAllEtudiants" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CoursServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="cours-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecole.cours.cours_service.CoursServiceApplication" />
@@ -125,6 +168,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.EtudiantControllerTest" />
+        <item itemvalue="JUnit.EtudiantControllerTest.testGetAllEtudiants" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -147,7 +196,7 @@
       <updated>1741545563407</updated>
       <workItem from="1741545564736" duration="778000" />
       <workItem from="1741546984443" duration="14415000" />
-      <workItem from="1741579401141" duration="20659000" />
+      <workItem from="1741579401141" duration="28039000" />
     </task>
     <servers />
   </component>

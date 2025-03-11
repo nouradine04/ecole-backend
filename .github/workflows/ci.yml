@@ -30,29 +30,31 @@ jobs:
             fi
           done
       - name: SonarCloud Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do
             if [ -d "$service" ]; then
-              echo "Scanning $service with SonarCloud..."
+              echo "Scanning $service..."
               cd "$service" && mvn sonar:sonar \
                 -Dsonar.projectKey=nouradine04_ecole-backend \
                 -Dsonar.organization=nouradine04 \
                 -Dsonar.host.url=https://sonarcloud.io \
-                -Dsonar.login=a66e7c0f750fc343688a81beb37264444415d3af  
+                -Dsonar.token=$SONAR_TOKEN
               cd ..
             fi
           done
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: "nourad23"         # Remplacer par votre nom d'utilisateur Docker Hub
-          password: "Texaco@10"           # Remplacer par votre mot de passe Docker Hub
+          username: "nourad23"
+          password: "Texaco@10"
       - name: Build and Push Docker Images
         run: |
           for service in etudiant-service professeur-service cours-service emploi-du-temps-service; do
             if [ -d "$service" ]; then
               echo "Building and pushing $service..."
-              cd "$service" && docker build -t nouradine04/$service:latest . && docker push nouradine04/$service:latest
+              cd "$service" && docker build -t ${{ secrets.DOCKER_USERNAME }}/$service:latest . && docker push ${{ secrets.DOCKER_USERNAME }}/$service:latest
               cd ..
             fi
           done

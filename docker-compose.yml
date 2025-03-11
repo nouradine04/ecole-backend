@@ -1,0 +1,71 @@
+version: '3.8'
+
+networks:
+  ecole-network:
+    driver: bridge
+
+services:
+  etudiant-service:
+    build: ./etudiant-service
+    ports:
+      - "8080:8080"
+    networks:
+      - ecole-network
+
+  professeur-service:
+    build: ./professeur-service
+    ports:
+      - "8081:8080"
+    networks:
+      - ecole-network
+
+  cours-service:
+    build: ./cours-service
+    ports:
+      - "8082:8080"
+    networks:
+      - ecole-network
+
+  emploi-du-temps-service:
+    build: ./emploi-du-temps-service
+    ports:
+      - "8083:8080"
+    networks:
+      - ecole-network
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8084:8080"
+      - "50000:50000"
+    networks:
+      - ecole-network
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+
+  sonarqube:
+    image: sonarqube:latest
+    ports:
+      - "9000:9000"
+    networks:
+      - ecole-network
+    environment:
+      - SONAR_JDBC_URL=jdbc:postgresql://db:5432/sonar
+      - SONAR_JDBC_USERNAME=sonar
+      - SONAR_JDBC_PASSWORD=sonar
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    networks:
+      - ecole-network
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+      - POSTGRES_DB=sonar
+
+volumes:
+  jenkins_home:

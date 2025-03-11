@@ -4,7 +4,7 @@ stages:
 
 build_backend:
   stage: build
-  image: maven:3.9-openjdk-22  # Changement ici
+  image: maven:3.9-openjdk-17
   script:
     - cd etudiant-service && mvn clean package -B
     - cd professeur-service && mvn clean package -B
@@ -20,7 +20,7 @@ build_backend:
 
 unit_tests_backend:
   stage: unit-tests
-  image: maven:3.9-openjdk-22  # Changement ici
+  image: maven:3.9-openjdk-17
   script:
     - cd etudiant-service && mvn test
     - cd professeur-service && mvn test

@@ -27,6 +27,11 @@
 		<url/>
 	</scm>
 	<properties>
+			<sonar.projectKey>ecole-backend</sonar.projectKey>
+			<sonar.projectName>ecole-backend</sonar.projectName>
+			<sonar.host.url>http://localhost:9000</sonar.host.url>
+			<sonar.login>${env.SONAR_TOKEN}</sonar.login>
+
 		<java.version>17</java.version>
 		<sonar.qualitygate.wait>true</sonar.qualitygate.wait>
 	</properties>
